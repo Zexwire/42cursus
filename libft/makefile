@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dvidal-l <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: mcarnere <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/27 18:11:39 by dvidal-l          #+#    #+#              #
-#    Updated: 2023/08/27 18:11:40 by dvidal-l         ###   ########.fr        #
+#    Created: 2024/03/14 12:15:33 by mcarnere          #+#    #+#              #
+#    Updated: 2024/03/14 12:15:35 by mcarnere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,15 +16,15 @@ SRC	= main.c sort_utils.c dictionary_data_read.c dictionary_read.c \
 
 OBJ = $(SRC:.c=.o)
 
-CC = cc
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-NAME = rush-02
+NAME = libft.a
 
 all : $(NAME) 
 
 $(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	ar -rcs $(CFLAGS) -o $(NAME) $(OBJ)
 
 clean :
 	-rm -f $(OBJ) 

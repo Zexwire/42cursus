@@ -1,45 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_Strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:11:06 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/16 15:11:06 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/03/16 17:56:23 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-
-char	*ft_strcat(char *dest, char *src)
-{
-	//comprobar si puedo usar el strlcat ya implementado en la lib
-	char	*res;
-
-	res = dest;
-	while (*dest)
-		dest++;
-	while (*src)
-	{
-		*dest = *src;
-		dest++;
-		src++;
-	}
-	*dest = '\0';
-	return (res);
-}
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
 
 void	ft_strcat_sep(int size, char **res, char **strs, char *sep)
 {

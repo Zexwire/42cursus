@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/16 15:06:19 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/16 15:57:47 by mcarnere         ###   ########.fr       */
+/*   Created: 2024/03/16 16:42:12 by mcarnere          #+#    #+#             */
+/*   Updated: 2024/03/16 17:40:38 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strdup(char *src)
+void	*memchr(const void *s, int c, size_t n)
 {
-	int		i;
-	char	*aux;
-	char	*res;
+	unsigned char	*str;
+	unsigned char	ch;
+	int				i;
 
+	str = (unsigned char) s;
+	ch = (unsigned char) c;
 	i = 0;
-	while (src[i] != '\0')
-		i++;
-	aux = (char *) malloc((i + 1) * sizeof (char));
-	if (aux == 0)
-		return (0);
-	res = aux;
-	while (*src)
+	while (i < n)
 	{
-		*aux = *src;
-		aux++;
-		src++;
+		if (str[i] == ch)
+			return (str);
+		++i;
 	}
-	*aux = '\0';
-	return (res);
+	if (ch == '\0')
+		return (str);
+	return (NULL);
 }

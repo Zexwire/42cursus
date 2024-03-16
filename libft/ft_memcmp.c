@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/16 15:06:19 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/16 15:57:47 by mcarnere         ###   ########.fr       */
+/*   Created: 2024/03/16 17:37:59 by mcarnere          #+#    #+#             */
+/*   Updated: 2024/03/16 17:54:28 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strdup(char *src)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int		i;
-	char	*aux;
-	char	*res;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-	i = 0;
-	while (src[i] != '\0')
-		i++;
-	aux = (char *) malloc((i + 1) * sizeof (char));
-	if (aux == 0)
-		return (0);
-	res = aux;
-	while (*src)
+	str1 = (unsigned char) s1;
+	str2 = (unsigned char) s2;
+	while (*str1 || *str2)
 	{
-		*aux = *src;
-		aux++;
-		src++;
+		if ((*str1 - *str2) != 0)
+			return (*str1 - *str2);
+		str1++;
+		str2++;
 	}
-	*aux = '\0';
-	return (res);
+	return (*str1 - *str2);
 }

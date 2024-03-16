@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:07:40 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/16 15:07:40 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/03/16 15:57:41 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 int	char_is_separator(char c, char *charset)
 {

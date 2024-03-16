@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/16 11:14:05 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/16 11:14:05 by mcarnere         ###   ########.fr       */
+/*   Created: 2024/03/16 15:00:33 by mcarnere          #+#    #+#             */
+/*   Updated: 2024/03/16 15:00:33 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-  
-void *ft_memcpy(void *dest, const void *src, size_t n)
-{
-	unsigned int	i;
 
-	i = 0;
-	while (i < n)
+int	ft_atoi(char *str)
+{
+	int	res;
+	int	mod;
+
+	res = 0;
+	mod = 1;
+	while (*str == ' ' || (*str > 8 && *str < 14))
+		str++;
+	while (*str == '+' || *str == '-')
 	{
-		dest[i] = src[i];
-		i++;
+		if (*str == '-')
+			mod *= -1;
+		str++;
 	}
-	return (dest);
+	while ('0' <= *str && *str <= '9')
+	{
+		res *= 10;
+		res += (*str - '0');
+		str++;
+	}
+	return (res * mod);
 }

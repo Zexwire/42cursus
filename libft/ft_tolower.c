@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 12:36:11 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/14 12:40:08 by mcarnere         ###   ########.fr       */
+/*   Created: 2024/03/16 10:48:09 by marvin            #+#    #+#             */
+/*   Updated: 2024/03/16 10:48:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+int	ft_tolower(int c)
 {
-	return (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'));
+	if ('A' <= c && c <= 'Z')
+		return (c + 32);
+	return (c);
 }

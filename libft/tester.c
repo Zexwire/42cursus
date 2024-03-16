@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int main (void)
+int	main(void)
 {
 	//isalpha
 	printf("a: %d", isalpha('a'));

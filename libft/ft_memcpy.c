@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 12:36:11 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/14 12:40:08 by mcarnere         ###   ########.fr       */
+/*   Created: 2024/03/16 11:14:05 by mcarnere          #+#    #+#             */
+/*   Updated: 2024/03/16 11:14:05 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	ft_isalpha(int c)
+  
+void *ft_memcpy(void *dest, const void *src, size_t n)
 {
-	return (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'));
+
 }

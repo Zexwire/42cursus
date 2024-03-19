@@ -3,16 +3,20 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mcarnere <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 12:15:33 by mcarnere          #+#    #+#              #
-#    Updated: 2024/03/14 12:15:35 by mcarnere         ###   ########.fr        #
+#    Updated: 2024/03/19 18:39:50 by mcarnere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#FIXME: cambiar para la librería
-SRC	= main.c sort_utils.c dictionary_data_read.c dictionary_read.c \
-	int_utils.c map_data.c print_numbers.c str_utils.c translator.c
+SRC	= 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
+		ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
+		ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_itoa.c \
+		ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c \
+		ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c \
+		ft_strjoin.c ft_strtrim.c ft_split.c ft_strmapi.c ft_striteri.c \
+		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
 OBJ = $(SRC:.c=.o)
 

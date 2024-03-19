@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:07:40 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/16 15:57:41 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/03/19 18:27:21 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	split_str(char **split, char *str, char *charset)
 	}
 }
 
-char	**ft_split(char *str, char *charset)
+char	**ft_split(char const *s, char c)
 {
 	char	**res;
 	int		words;

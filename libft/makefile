@@ -6,9 +6,16 @@
 #    By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 12:15:33 by mcarnere          #+#    #+#              #
-#    Updated: 2024/03/19 18:39:50 by mcarnere         ###   ########.fr        #
+#    Updated: 2024/03/19 20:08:40 by mcarnere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+NAME = libft.a
+
+BONUS_NAME = .bonus
+
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
 SRC	= 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 		ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
@@ -20,15 +27,20 @@ SRC	= 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 
 OBJ = $(SRC:.c=.o)
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+BONUS = 
 
-NAME = libft.a
+BONUS_OBJ = $(BONUS:.c=.o)
 
 all : $(NAME) 
 
 $(NAME) : $(OBJ)
 	ar -rcs $(CFLAGS) -o $(NAME) $(OBJ)
+
+bonus : $(BONUS_NAME)
+
+$(BONUS_NAME) : $(OBJ) $(BONUS_OBJ)
+	ar -rcs $(NAME) $(OBJ) $(BONUS_OBJ)
+	ar -rcs $(BONUS_NAME) $(OBJ) $(BONUS_OBJ)
 
 clean :
 	-rm -f $(OBJ) 
@@ -38,4 +50,4 @@ fclean:	clean
 
 re: fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:	all bonus clean fclean re

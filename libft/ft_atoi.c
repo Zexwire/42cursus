@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:00:33 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/16 15:00:33 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/03/19 19:53:05 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	res;
 	int	mod;

@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:29:47 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/19 18:30:58 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/03/19 18:48:43 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char			*ft_strdup(char *src);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(int size, char **strs, char *sep);
 char			*ft_strtrim(char const *s1, char const *set);
-//char			**ft_split(char const *s, char c);
+char			**ft_split(char const *s, char c);
 char			*ft_itoa(int n);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));

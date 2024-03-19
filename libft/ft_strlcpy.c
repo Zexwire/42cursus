@@ -6,23 +6,23 @@
 /*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:41:19 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/14 12:41:34 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/03/19 19:45:11 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	unsigned int	i;
+	size_t	i;
 
 	i = 0;
-	while (src[i] != '\0' && i < (size - 1))
+	while (src[i] != '\0' && i < (dstsize - 1))
 	{
-		dest[i] = src[i];
+		dst[i] = src[i];
 		i++;
 	}
-	dest[i] = '\0';
+	dst[i] = '\0';
 	while (src[i])
 		i++;
 	return (i);

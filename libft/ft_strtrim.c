@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 16:35:29 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/19 16:57:07 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/03/19 19:29:51 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	set_contains(char const *ptr, char const *set)
 {
 	char	*set_ptr;
 
-	set_ptr = set;
+	set_ptr = (char *) set;
 	while (set_ptr)
 	{
 		if (set_ptr == ptr)
@@ -32,10 +32,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*res;
 	char	*res_ptr;
 
-	start_ptr = s1;
+	start_ptr = (char *) s1;
 	while (set_contains(start_ptr, set))
 		++start_ptr;
-	end_ptr = s1 + ft_strlen(s1) - 1;
+	end_ptr = (char *) s1 + ft_strlen(s1) - 1;
 	while (set_contains(end_ptr, set))
 		--end_ptr;
 	res = malloc((end_ptr - start_ptr) * sizeof(char));

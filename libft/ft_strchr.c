@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:35:12 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/19 18:20:09 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/03/19 19:10:06 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ char	*ft_strchr(const char *s, int c)
 {
 	char	*str;
 
-	str = (char) s;
+	str = (char *) s;
 	while (str != '\0')
 	{
-		if (str == c)
+		if (*str == c)
 			return (str);
 		++str;
 	}

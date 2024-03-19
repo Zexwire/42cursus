@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:48:52 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/19 17:52:17 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/03/19 19:45:07 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
+	char	nwln;
+
+	nwln = '\n';
 	write(fd, s, ft_strlen(s) * sizeof(char));
-	write(fd, '\n', sizeof(char));
+	write(fd, &nwln, sizeof(char));
 }

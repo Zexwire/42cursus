@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 10:59:52 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/16 15:56:43 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/03/19 19:09:34 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	ft_bzero(void *s, size_t n)
 {
 	char	*str;
-	int		i;
+	size_t	i;
 
-	str = (char) s;
+	str = (char *) s;
 	i = 0;
 	while (i < n)
 	{

@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:01:52 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/19 18:23:08 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/03/19 19:14:16 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ char	*ft_strnstr(const char *big, const char *little, int len)
 		while (big[i + j] == little[j] && big[i + j] != '\0')
 			j++;
 		if (little[j] == '\0')
-			return (big + i);
+			return ((char *) big + i);
 		i++;
 		j = 0;
 	}
 	if (little[j] == '\0')
-		return (big);
+		return ((char *) big);
 	return (0);
 }

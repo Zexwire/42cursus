@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 16:35:29 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/19 19:29:51 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:56:18 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ int	set_contains(char const *ptr, char const *set)
 	set_ptr = (char *) set;
 	while (set_ptr)
 	{
-		if (set_ptr == ptr)
+		if (*set_ptr == *ptr)
 			return (1);
+		++set_ptr;
 	}
 	return (0);
 }

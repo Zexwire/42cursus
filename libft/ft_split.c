@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:07:40 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/19 19:31:37 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:57:18 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	count_words(const char *s, char c)
 	{
 		if (*s == c)
 			++i;
+		++s;
 	}
 	return (i);
 }

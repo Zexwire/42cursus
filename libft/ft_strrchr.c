@@ -19,7 +19,7 @@ char	*ft_strrchr(const char *s, int c)
 
 	str = (char *) s;
 	res = NULL;
-	while (str != '\0')
+	while (str)
 	{
 		if (*str == c)
 			res = str;

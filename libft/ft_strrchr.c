@@ -19,7 +19,7 @@ char	*ft_strrchr(const char *s, int c)
 
 	str = (char *) s;
 	res = NULL;
-	while (str)
+	while (*str)
 	{
 		if (*str == c)
 			res = str;
@@ -29,3 +29,7 @@ char	*ft_strrchr(const char *s, int c)
 		return (str);
 	return (res);
 }
+
+/*
+
+*/

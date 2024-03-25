@@ -12,43 +12,36 @@
 
 #include "libft.h"
 
-int	set_contains(char const *ptr, char const *set)
+int	set_contains(char c, char const *set)
 {
-	char	*set_ptr;
+	int	i;
 
-	set_ptr = (char *) set;
-	while (set_ptr)
+	i = 0;
+	while (*(set + i))
 	{
-		if (*set_ptr == *ptr)
+		if (*(set + i) == c)
 			return (1);
-		++set_ptr;
+		++i;
 	}
 	return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*start_ptr;
-	char	*end_ptr;
+	int		i;
+	int		j;
 	char	*res;
-	char	*res_ptr;
 
-	start_ptr = (char *) s1;
-	while (set_contains(start_ptr, set))
-		++start_ptr;
-	end_ptr = (char *) s1 + ft_strlen(s1) - 1;
-	while (set_contains(end_ptr, set))
-		--end_ptr;
-	res = malloc((end_ptr - start_ptr) * sizeof(char));
+	i = 0;
+	while (set_contains(*(s1 + i), set))
+		++i;
+	j = ft_strlen(s1) - 1;
+	while (set_contains(*(s1 + j), set))
+		--j;
+	if (i > j)
+		return ("");
+	res = ft_substr(s1, i, (j - i + 1));
 	if (res == NULL)
 		return (NULL);
-	res_ptr = res;
-	while (start_ptr != end_ptr)
-	{
-		res_ptr = start_ptr;
-		++res_ptr;
-		++start_ptr;
-	}
-	res_ptr = start_ptr;
 	return (res);
 }

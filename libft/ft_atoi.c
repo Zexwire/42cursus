@@ -20,18 +20,19 @@ int	ft_atoi(const char *str)
 	res = 0;
 	mod = 1;
 	while (*str == ' ' || (*str > 8 && *str < 14))
-		str++;
-	while (*str == '+' || *str == '-')
+		++str;
+	if (*str == '-')
 	{
-		if (*str == '-')
-			mod *= -1;
-		str++;
+		mod *= -1;
+		++str;
 	}
+	else if (*str == '+')
+		++str;
 	while ('0' <= *str && *str <= '9')
 	{
 		res *= 10;
 		res += (*str - '0');
-		str++;
+		++str;
 	}
 	return (res * mod);
 }

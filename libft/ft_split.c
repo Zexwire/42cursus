@@ -12,52 +12,56 @@
 
 #include "libft.h"
 
-int	count_words(const char *s, char c)
+int	word_count(const char *s, char c)
 {
 	int	i;
+	int	count;
 
 	i = 0;
-	while (s)
+	count = 0;
+	while (*(s + i))
 	{
-		if (*s == c)
-			++i;
-		++s;
+		if (*(s + i) == c)
+			++count;
+		++i;
 	}
-	return (i);
+	return (count);
 }
 
-void	split_str(char **split, const char *str, char c)
+void	fill_split(const char *s, char c, char **res)
 {
 	int	i;
 	int	j;
-	int	word;
+	int	k;
 
-	word = 0;
 	i = 0;
-	while (str[i])
+	k = 0;
+	while (*(s + i))
 	{
-		if (*str == c)
-			i++;
-		else
+		if (*(s + i) == c)
 		{
-			j = 0;
-			while (*str != c)
-				j++;
-			split[word] = ft_substr(str, i, j);
-			i += j;
-			word++;
+			++i;
+			continue ;
 		}
+		j = 0;
+		while (*(s + i + j) && *(s + i + j) != c)
+			++j;
+		res[k] = ft_substr(s, i, j);
+		++k;
+		i += j;
 	}
 }
 
 char	**ft_split(const char *s, char c)
 {
-	char	**res;
 	int		words;
+	char	**res;
 
-	words = count_words(s, c);
-	res = (char **) malloc(sizeof(char *) * (words + 1));
+	words = word_count(s, c);
+	res = (char **) malloc((words + 1) * sizeof(char *));
+	if (res == NULL)
+		return (NULL);
 	res[words] = NULL;
-	split_str(res, s, c);
+	fill_split(s, c, res);
 	return (res);
 }

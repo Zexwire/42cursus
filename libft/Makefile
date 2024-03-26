@@ -1,17 +1,17 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+         #
+#    By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 12:15:33 by mcarnere          #+#    #+#              #
-#    Updated: 2024/03/20 18:02:45 by mcarnere         ###   ########.fr        #
+#    Updated: 2024/03/26 21:23:51 by mcarnere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-#BONUS_NAME = .bonus
+BONUS_NAME = .bonus
 
 SOURCES =		ft_isdigit.c ft_memset.c ft_strdup.c ft_strncmp.c \
 				ft_atoi.c ft_isprint.c ft_striteri.c ft_strnstr.c \
@@ -24,10 +24,10 @@ SOURCES =		ft_isdigit.c ft_memset.c ft_strdup.c ft_strncmp.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 
-#BONUSS =		ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+BONUSS =		ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 				ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
 				ft_lstmap.c
-#BONUS_OBJS = $(BONUSS:.c=.o)
+BONUS_OBJS = $(BONUSS:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror
 REMOVE = rm -f

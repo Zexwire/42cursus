@@ -6,7 +6,7 @@
 #    By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 12:15:33 by mcarnere          #+#    #+#              #
-#    Updated: 2024/03/26 21:23:51 by mcarnere         ###   ########.fr        #
+#    Updated: 2024/03/26 22:12:34 by mcarnere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ all: $(NAME)
 $(NAME): $(OBJECTS)
 	ar -rcs $(NAME) $(OBJECTS)
 
-#bonus: $(BONUS_NAME)
+bonus: $(BONUS_NAME)
 
 clean:
 	$(REMOVE) $(OBJECTS) $(BONUS_OBJS)
@@ -48,8 +48,8 @@ fclean: clean
 
 re: fclean all
 
-#$(BONUS_NAME): $(OBJECTS) $(BONUS_OBJS)
-#	ar rcs $(NAME) $(OBJECTS) $(BONUS_OBJS)
-#	ar rcs $(BONUS_NAME) $(OBJECTS) $(BONUS_OBJS)
+$(BONUS_NAME): $(OBJECTS) $(BONUS_OBJS)
+	ar rcs $(NAME) $(OBJECTS) $(BONUS_OBJS)
+	ar rcs $(BONUS_NAME) $(OBJECTS) $(BONUS_OBJS)
 
 .PHONY: all clean fclean re

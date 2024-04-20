@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:07:40 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/20 17:57:18 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/04/20 15:17:13 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,8 @@ void	fill_split(const char *s, char c, char **res)
 	k = 0;
 	while (*(s + i))
 	{
-		if (*(s + i) == c)
-		{
+		while (*(s + i) == c)
 			++i;
-			continue ;
-		}
 		j = 0;
 		while (*(s + i + j) && *(s + i + j) != c)
 			++j;

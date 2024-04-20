@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:58:28 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/26 21:18:58 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/04/13 14:11:19 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	{
 		aux = ptr->next;
 		ft_lstdelone(ptr, del);
+		free(ptr);
 		ptr = aux;
 	}
 }

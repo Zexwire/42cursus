@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:07:40 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/04/20 15:17:13 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/04/20 15:40:53 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,20 @@ int	word_count(const char *s, char c)
 {
 	int	i;
 	int	count;
+	int	flag;
 
 	i = 0;
 	count = 0;
+	flag = 0;
 	while (*(s + i))
 	{
 		if (*(s + i) == c)
+			flag = 0;
+		else if (flag == 0)
+		{
+			flag = 1;
 			++count;
+		}
 		++i;
 	}
 	return (count);

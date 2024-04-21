@@ -6,12 +6,16 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:07:40 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/04/21 13:08:46 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/04/21 14:30:23 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Counts the number of words in a string delimited by a character
+/// @param s Original string
+/// @param c Delimiter character
+/// @return Number of words in the string
 int	word_count(const char *s, char c)
 {
 	int	i;
@@ -35,28 +39,58 @@ int	word_count(const char *s, char c)
 	return (count);
 }
 
-void	fill_split(const char *s, char c, char **res)
+/// @brief Frees the memory allocated for the substrings
+/// @param res Array of strings
+/// @param k Number of strings in the array
+void	free_split(char **res, int k)
 {
 	int	i;
-	int	j;
-	int	k;
 
 	i = 0;
-	k = 0;
-	while (*(s + i))
+	while (i < k)
 	{
-		while (*(s + i) == c)
-			++i;
-		j = 0;
-		while (*(s + i + j) && *(s + i + j) != c)
-			++j;
-		if (j > 0)
-		{
-			res[k] = ft_substr(s, i, j);
-			++k;
-		}
-		i += j;
+		free(res[i]);
+		i++;
 	}
+}
+
+/*
+Used an array to store the count of the characters in the string due to lines
+ - Cont[0] is the usual i, the iteration in the string
+ - Cont[1], being j, is the count of the characters in the next substring
+ - Cont[2], being k is the index in res
+*/
+/// @brief Fills the array of strings with the substrings of the original string
+/// @param s Original string
+/// @param c Delimiter chaeacter
+/// @param res Array of strings to store the substrings
+/// @return 0 if successful, -1 if an error occurs
+int	fill_split(const char *s, char c, char **res)
+{
+	int	cont[3];
+
+	cont[0] = 0;
+	cont[2] = 0;
+	while (*(s + cont[0]))
+	{
+		while (*(s + cont[0]) == c)
+			++cont[0];
+		cont[1] = 0;
+		while (*(s + cont[0] + cont[1]) && *(s + cont[0] + cont[1]) != c)
+			++cont[1];
+		if (cont[1] > 0)
+		{
+			res[cont[2]] = ft_substr(s, cont[0], cont[1]);
+			if (res[cont[2]] == NULL)
+			{
+				free_split(res, cont[2]);
+				return (-1);
+			}
+			++cont[2];
+		}
+		cont[0] += cont[1];
+	}
+	return (0);
 }
 
 char	**ft_split(const char *s, char c)
@@ -69,6 +103,10 @@ char	**ft_split(const char *s, char c)
 	if (res == NULL)
 		return (NULL);
 	res[words] = NULL;
-	fill_split(s, c, res);
+	if (fill_split(s, c, res) == -1)
+	{
+		free(res);
+		return (NULL);
+	}
 	return (res);
 }

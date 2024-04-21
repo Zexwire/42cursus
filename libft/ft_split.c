@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:07:40 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/04/20 15:40:53 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/04/21 13:08:46 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,11 @@ void	fill_split(const char *s, char c, char **res)
 		j = 0;
 		while (*(s + i + j) && *(s + i + j) != c)
 			++j;
-		res[k] = ft_substr(s, i, j);
-		++k;
+		if (j > 0)
+		{
+			res[k] = ft_substr(s, i, j);
+			++k;
+		}
 		i += j;
 	}
 }

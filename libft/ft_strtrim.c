@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 16:35:29 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/04/21 14:44:17 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/04/21 15:37:17 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (set_contains(*(s1 + j), set))
 		--j;
 	if (i > j)
-		return ("");
+		return (ft_strdup(""));
 	res = ft_substr(s1, i, (j - i + 1));
 	if (res == NULL)
 		return (NULL);

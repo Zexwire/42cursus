@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:42:12 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/04/21 14:10:20 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/04/21 15:11:54 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,5 @@ void	*ft_memchr(const void *s, int c, size_t n)
 			return (str + i);
 		++i;
 	}
-	if (ch == '\0')
-		return (str);
 	return (NULL);
 }

@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 16:57:24 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/19 17:36:37 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/04/21 14:40:51 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Counts the number of characters in a number
+/// @param n integer number, treated as long int for simplicity
+/// @return Number of characters in the number
 int	numstrlen(long int n)
 {
 	int	i;

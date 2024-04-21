@@ -6,12 +6,16 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 16:35:29 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/04/21 13:34:57 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/04/21 14:44:17 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Check if a character is in a set
+/// @param c Character to check
+/// @param set Set of characters
+/// @return 0 if not in set, 1 if in set
 int	set_contains(char c, char const *set)
 {
 	int	i;

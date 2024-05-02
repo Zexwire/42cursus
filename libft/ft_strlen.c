@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:38:26 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/19 19:45:12 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:47:27 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Length of a string
+/// @param s String to measure
+/// @return Length of the string
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;

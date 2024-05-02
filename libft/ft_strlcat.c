@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 10:56:34 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/19 19:45:11 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:58:32 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Appends the NUL-terminated string src to the end of dst, 
+/// at most dstsize - strlen(dst) - 1 characters will be copied
+/// @param dst Destination string
+/// @param src Source string
+/// @param dstsize Size of the destination buffer
+/// @return Length of the string that would have been created if enough space
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;

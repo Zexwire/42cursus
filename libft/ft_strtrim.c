@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 16:35:29 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/04/21 15:37:17 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:54:04 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ int	set_contains(char c, char const *set)
 	return (0);
 }
 
+/// @brief Deletes the set of characters from the beginning and end of a string
+/// @param s1 String to trim
+/// @param set Characters to trim
+/// @return Pointer to the allocated trimmed string
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		i;

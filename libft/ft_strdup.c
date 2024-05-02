@@ -6,12 +6,15 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:06:19 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/04/21 14:43:22 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:39:01 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Copies a string into allocated memory
+/// @param s1 String to copy
+/// @return Pointer to the new string, NULL if the allocation fails
 char	*ft_strdup(const char *s1)
 {
 	int		i;

@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:00:33 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/19 19:53:05 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:26:21 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Converts the initial portion of the string pointed to by str to int
+/// @param str String to convert
+/// @return Int converted from the string
 int	ft_atoi(const char *str)
 {
 	int	res;

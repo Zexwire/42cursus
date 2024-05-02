@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:50:28 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/19 18:30:15 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:34:40 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Writes a number to a file
+/// @param n Number to write
+/// @param fd File descriptor
 void	ft_putnbr_fd(int n, int fd)
 {
 	char	nbr;

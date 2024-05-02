@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:07:40 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/04/21 14:30:23 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:24:37 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,10 @@ int	fill_split(const char *s, char c, char **res)
 	return (0);
 }
 
+/// @brief Separates a string s into substrings delimited by a character c
+/// @param s String to split
+/// @param c Character to use as delimiter
+/// @return Array of strings with the substrings. NULL terminated
 char	**ft_split(const char *s, char c)
 {
 	int		words;

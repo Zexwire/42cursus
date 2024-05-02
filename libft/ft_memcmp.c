@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcarnere <mcarnere@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 17:37:59 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/03/19 19:07:58 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:27:42 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Compares two memory blocks
+/// @param s1 First memory block
+/// @param s2 Second memory block
+/// @param n Number of bytes to compare
+/// @return Difference between the first different byte, 
+/// > 0 if s1 > s2, < 0 if s1 < s2, 0 if equal
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	unsigned char	*str1;

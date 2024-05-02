@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 16:57:24 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/04/21 14:40:51 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:37:18 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ int	numstrlen(long int n)
 	return (i);
 }
 
+/// @brief Converts an integer number to a string
+/// @param n Integer number to convert
+/// @return String representation of the number
 char	*ft_itoa(int n)
 {
 	long int	num;

@@ -6,5 +6,12 @@
 		"string_view": "c",
 		"initializer_list": "c",
 		"utility": "c"
-	}
+	},
+	"editor.fontSize": 13,
+	"terminal.integrated.fontSize": 13,
+	"cmake.options.statusBarVisibility": "icon",
+	"notebook.cellToolbarVisibility": "click",
+	"editor.scrollbar.horizontal": "visible",
+	"editor.scrollbar.vertical": "visible",
+	"editor.inlineSuggest.showToolbar": "always"
 }

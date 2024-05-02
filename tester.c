@@ -6,14 +6,14 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 14:51:17 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/04/21 14:42:44 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:56:57 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 #include <stdio.h>
 
-#TESTER FOR FT_LSADD_FRONT
+#TESTER FOR FT_LSRADD_FRONT
 
 void print_list(t_list *lst) {
     while (lst) {

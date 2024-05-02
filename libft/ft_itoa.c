@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 16:57:24 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/05/02 14:37:18 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/05/02 17:40:02 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /// @brief Counts the number of characters in a number
 /// @param n integer number, treated as long int for simplicity
 /// @return Number of characters in the number
-int	numstrlen(long int n)
+static int	numstrlen(long int n)
 {
 	int	i;
 
@@ -45,7 +45,7 @@ char	*ft_itoa(int n)
 	int			i;
 
 	num = n;
-	i = numstrlen(n);
+	i = numstrlen((long int) n);
 	res = (char *) malloc((i + 1) * sizeof(char));
 	if (res == NULL)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:07:40 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/05/02 14:24:37 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/05/02 17:29:35 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /// @param s Original string
 /// @param c Delimiter character
 /// @return Number of words in the string
-int	word_count(const char *s, char c)
+static int	word_count(const char *s, char c)
 {
 	int	i;
 	int	count;
@@ -42,7 +42,7 @@ int	word_count(const char *s, char c)
 /// @brief Frees the memory allocated for the substrings
 /// @param res Array of strings
 /// @param k Number of strings in the array
-void	free_split(char **res, int k)
+static void	free_split(char **res, int k)
 {
 	int	i;
 
@@ -65,7 +65,7 @@ Used an array to store the count of the characters in the string due to lines
 /// @param c Delimiter chaeacter
 /// @param res Array of strings to store the substrings
 /// @return 0 if successful, -1 if an error occurs
-int	fill_split(const char *s, char c, char **res)
+static int	fill_split(const char *s, char c, char **res)
 {
 	int	cont[3];
 

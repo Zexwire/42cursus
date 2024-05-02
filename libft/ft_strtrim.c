@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 16:35:29 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/05/02 15:54:04 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/05/02 17:31:04 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /// @param c Character to check
 /// @param set Set of characters
 /// @return 0 if not in set, 1 if in set
-int	set_contains(char c, char const *set)
+static int	set_contains(char c, char const *set)
 {
 	int	i;
 

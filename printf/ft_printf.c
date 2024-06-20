@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 16:04:04 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/06/20 21:53:38 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/06/20 22:19:51 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	parse_format(char const *format, va_list argptr, int *count)
 void	parse_format2(char const *format, va_list argptr, int *count)
 {
 	unsigned long long	addr;
+	int					i;
 
 	if (*format == 'd' || *format == 'i')
 		ft_putnbr(va_arg(argptr, int), count);
@@ -89,7 +90,14 @@ void	parse_format2(char const *format, va_list argptr, int *count)
 	else if (*format == 'p')
 	{
 		addr = va_arg(argptr, unsigned long long);
-
+		i = sizeof(unsigned long long) / sizeof(unsigned int);
+		while (i > 0)
+		{
+			ft_putnbr_uns((unsigned int)
+				addr >> ((i * sizeof(unsigned int)) - 1) & UINT_MAX,
+				"0123456789abcdef", count);
+			--i;
+		}
 	}
 }
 

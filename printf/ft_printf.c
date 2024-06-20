@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 16:04:04 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/06/20 21:37:58 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/06/20 21:53:38 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,19 @@ void	ft_putnbr_uns(unsigned int nbr, char *base, int *count)
 	write(1, &number, 1);
 }
 
-void parse_format(char const *format, va_list argptr, int *count)
+// FIXME: tengo que comprobar que lo que me pasan es efectivamente lo que quiero
+void	parse_format(char const *format, va_list argptr, int *count)
 {
 	char	*str;
 	int		len;
 
-	if (*format == 'c')
+	if (*format == '%')
+	{
+		*str = '%';
+		write(1, str, 1);
+		*count++;
+	}
+	else if (*format == 'c')
 	{
 		write(1, va_arg(argptr, char), 1);
 		*count++;
@@ -63,10 +70,15 @@ void parse_format(char const *format, va_list argptr, int *count)
 		*count += len;
 		write(1, str, len * sizeof(char));
 	}
-	//TODO: falta pointer unicamente
-	else if (*format == 'p')
-		*count += print_pointer(va_arg(argptr, void *));
-	else if (*format == 'd' || *format == 'i')
+	else
+		parse_format2(format, argptr, count);
+}
+
+void	parse_format2(char const *format, va_list argptr, int *count)
+{
+	unsigned long long	addr;
+
+	if (*format == 'd' || *format == 'i')
 		ft_putnbr(va_arg(argptr, int), count);
 	else if (*format == 'u')
 		ft_putnbr_uns(va_arg(argptr, unsigned int), "0123456789", count);
@@ -74,15 +86,15 @@ void parse_format(char const *format, va_list argptr, int *count)
 		ft_putnbr_uns(va_arg(argptr, unsigned int), "0123456789abcdef", count);
 	else if (*format == 'X')
 		ft_putnbr_uns(va_arg(argptr, unsigned int), "0123456789ABCDEF", count);
-	else if (*format == '%')
+	else if (*format == 'p')
 	{
-		*str = '%';
-		write(1, str, 1);
-		*count++;
+		addr = va_arg(argptr, unsigned long long);
+
 	}
 }
 
-int ft_printf(char const *format, ...)
+// FIXME: tengo que traer libft ya que uso strlen
+int	ft_printf(char const *format, ...)
 {
 	int		count;
 	va_list	argptr;

@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:29:47 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/06/20 21:38:34 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/06/20 21:44:09 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
-int		ft_printf(char const *, ...);
+int	ft_printf(char const *format, ...);
 
 #endif

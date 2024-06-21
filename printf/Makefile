@@ -6,13 +6,13 @@
 #    By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 12:15:33 by mcarnere          #+#    #+#              #
-#    Updated: 2024/06/20 16:06:49 by mcarnere         ###   ########.fr        #
+#    Updated: 2024/06/21 21:47:19 by mcarnere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SOURCES = ft_printf.c 
+SOURCES = ft_printf.c ft_printf_utils.c
 
 OBJECTS = $(SOURCES:.c=.o)
 

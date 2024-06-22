@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 16:04:04 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/06/21 21:50:04 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/06/22 13:28:42 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,35 +19,26 @@ void	parse_format2(char const *format, va_list argptr, int *count)
 	if (*format == 'd' || *format == 'i')
 		ft_printnbr(va_arg(argptr, int), count);
 	else if (*format == 'u')
-		ft_printnbr_uns((unsigned long long)
-			va_arg(argptr, unsigned int), "0123456789", count);
+		ft_printuns(va_arg(argptr, unsigned int), count);
 	else if (*format == 'x')
-		ft_printnbr_uns((unsigned long long)
+		ft_printhexa((unsigned long long)
 			va_arg(argptr, unsigned int), "0123456789abcdef", count);
 	else if (*format == 'X')
-		ft_printnbr_uns((unsigned long long)
+		ft_printhexa((unsigned long long)
 			va_arg(argptr, unsigned int), "0123456789ABCDEF", count);
 	else if (*format == 'p')
 	{
-		write(1, "0x", 2);
 		addr = (unsigned long long) va_arg(argptr, void *);
-		ft_printnbr_uns(addr, "0123456789abcdef", count);
+		if (addr == 0)
+		{
+			write(1, "(nil)", 5);
+			*count += 5;
+			return ;
+		}
+		write(1, "0x", 2);
+		*count += 2;
+		ft_printhexa(addr, "0123456789abcdef", count);
 	}
-}
-
-void	ft_printstr(char *str, int *count)
-{
-	int	len;
-
-	if (!str)
-	{
-		write(1, "(null)", 6 * sizeof(char));
-		*count += 6;
-		return ;
-	}
-	len = ft_strlen(str);
-	*count += len;
-	write(1, str, len * sizeof(char));
 }
 
 void	parse_format(char const *format, va_list argptr, int *count)

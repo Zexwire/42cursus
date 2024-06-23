@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 20:30:00 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/06/22 13:27:57 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/06/23 18:58:03 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,10 @@ int	main()
 	
 	// Test case 14: Trying to print a something with %p
 	ft_printf("The string is %p %p %p %p %p %p %p\n", num, hex, hex, ptr, str, unum, ch);
+
+	// Test case 15: Trying to print a character with %s
+	//ft_printf("The string is %s\n", ch);
+	printf("The string is %s\n", ch);
 	
     return (0);
 }

@@ -6,13 +6,18 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 16:04:04 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/06/22 13:28:42 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/06/23 19:12:00 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	parse_format2(char const *format, va_list argptr, int *count)
+/// @brief Auxiliar function to parse_format, treating the cases of 
+/// %d, %i, %u, %x, %X and %p format specifiers
+/// @param format String with the format specifier
+/// @param argptr Pointer to the arguments list
+/// @param count Pointer to the counter of printed characters
+static void	parse_format2(char const *format, va_list argptr, int *count)
 {
 	unsigned long long	addr;
 
@@ -41,7 +46,13 @@ void	parse_format2(char const *format, va_list argptr, int *count)
 	}
 }
 
-void	parse_format(char const *format, va_list argptr, int *count)
+/// @brief Function to parse the format specifier and 
+/// call the corresponding function to print the argument
+/// it treats the cases of %%, %c and %s format specifiers
+/// @param format String with the format specifier
+/// @param argptr Pointer to the arguments list
+/// @param count Pointer to the counter of printed characters
+static void	parse_format(char const *format, va_list argptr, int *count)
 {
 	int		aux;
 

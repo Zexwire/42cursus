@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 21:40:46 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/06/23 19:43:14 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/06/23 21:17:01 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ void	ft_printuns(unsigned int nbr, int *count)
 	if (nbr / 10 != 0)
 		ft_printuns((nbr / 10), count);
 	number = nbr % 10 + '0';
-	++*count;
-	write(1, &number, 1);
+	*count += write(1, &number, 1);
 }
 
 /// @brief Prints a number in hexadecimal format in stdout and counts 
@@ -39,8 +38,7 @@ void	ft_printhexa(unsigned long long nbr, char *base, int *count)
 	if (nbr / 16 != 0)
 		ft_printhexa((nbr / 16), base, count);
 	number = base[nbr % 16];
-	++*count;
-	write(1, &number, 1);
+	*count += write(1, &number, 1);
 }
 
 /// @brief Tweaked version of ft_putnbr_fd to print a number in stdout and 
@@ -57,8 +55,7 @@ void	ft_printnbr(int n, int *count)
 			*count += 11;
 			return ;
 		}
-		write(1, "-", 1);
-		++*count;
+		*count += write(1, "-", 1);
 		n *= -1;
 	}
 	ft_printuns(n, count);
@@ -72,14 +69,12 @@ void	ft_printstr(char *str, int *count)
 {
 	if (!str)
 	{
-		write(1, "(null)", 6 * sizeof(char));
-		*count += 6;
+		*count += write(1, "(null)", 6);
 		return ;
 	}
 	while (*str)
 	{
-		write(1, str, sizeof(char));
-		++*count;
+		*count += write(1, str, 1);
 		++str;
 	}
 }

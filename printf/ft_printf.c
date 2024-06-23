@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 16:04:04 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/06/23 19:12:00 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/06/23 21:15:47 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 /// @param count Pointer to the counter of printed characters
 static void	parse_format2(char const *format, va_list argptr, int *count)
 {
-	unsigned long long	addr;
+	char	aux;
 
 	if (*format == 'd' || *format == 'i')
 		ft_printnbr(va_arg(argptr, int), count);
@@ -31,18 +31,12 @@ static void	parse_format2(char const *format, va_list argptr, int *count)
 	else if (*format == 'X')
 		ft_printhexa((unsigned long long)
 			va_arg(argptr, unsigned int), "0123456789ABCDEF", count);
-	else if (*format == 'p')
+	else
 	{
-		addr = (unsigned long long) va_arg(argptr, void *);
-		if (addr == 0)
-		{
-			write(1, "(nil)", 5);
-			*count += 5;
-			return ;
-		}
-		write(1, "0x", 2);
-		*count += 2;
-		ft_printhexa(addr, "0123456789abcdef", count);
+		if (*format != '%')
+			--format;
+		aux = '%';
+		*count += write(1, &aux, 1);
 	}
 }
 
@@ -54,22 +48,27 @@ static void	parse_format2(char const *format, va_list argptr, int *count)
 /// @param count Pointer to the counter of printed characters
 static void	parse_format(char const *format, va_list argptr, int *count)
 {
-	int		aux;
+	unsigned long long	addr;
+	int					aux;
 
-	if (*format == '%')
-	{
-		aux = '%';
-		write(1, &aux, 1);
-		++*count;
-	}
+	if (*format == 's')
+		ft_printstr(va_arg(argptr, char *), count);
 	else if (*format == 'c')
 	{
 		aux = va_arg(argptr, int);
-		write(1, &aux, 1);
-		++*count;
+		*count += write(1, &aux, 1);
 	}
-	else if (*format == 's')
-		ft_printstr(va_arg(argptr, char *), count);
+	else if (*format == 'p')
+	{
+		addr = (unsigned long long) va_arg(argptr, void *);
+		if (addr == 0)
+		{
+			*count += write(1, "(nil)", 5);
+			return ;
+		}
+		*count += write(1, "0x", 2);
+		ft_printhexa(addr, "0123456789abcdef", count);
+	}
 	else
 		parse_format2(format, argptr, count);
 }
@@ -77,12 +76,14 @@ static void	parse_format(char const *format, va_list argptr, int *count)
 int	ft_printf(char const *format, ...)
 {
 	int		count;
+	int		flag;
 	va_list	argptr;
 
 	count = 0;
 	va_start(argptr, format);
 	while (*format && count >= 0)
 	{
+		flag = count;
 		if (*format == '%')
 		{
 			++format;
@@ -90,11 +91,11 @@ int	ft_printf(char const *format, ...)
 		}
 		else
 		{
-			write(1, format, 1);
-			++count;
+			count += write(1, format, 1);
 		}
+		if (flag > count)
+			return (va_end(argptr), -1);
 		++format;
 	}
-	va_end(argptr);
-	return (count);
+	return (va_end(argptr), count);
 }

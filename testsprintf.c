@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 20:30:00 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/06/23 19:01:26 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/06/23 21:19:13 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,28 @@ int	main()
 	printf("%d\n", ft_printf("The string is %s, the pointer is %p\n", null, NULL));
 	printf("%d\n", printf("The string is %s, the pointer is %p\n", null, NULL));
 
+//PACO TESTS
+
+	char *s2 = "Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Atirei o pau no gatis, per gatis num morreus.";
+
+	printf("%d\n", printf("%s", ""));
+	printf("%d\n", printf(" %s", ""));
+	printf("%d\n", printf("%s ", ""));
+	printf("%d\n", printf(" %s ", ""));
+	printf("%d\n", printf(" %s %s ", "", "-"));
+	printf("%d\n", printf(" %s %s ", " - ", ""));
+	printf("%d\n", printf(" %s %s %s %s %s", " - ", "", "4", "", s2));
+	printf("%d\n", printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 "));
+
+	printf("%d\n", ft_printf("%s", ""));
+	printf("%d\n", ft_printf(" %s", ""));
+	printf("%d\n", ft_printf("%s ", ""));
+	printf("%d\n", ft_printf(" %s ", ""));
+	printf("%d\n", ft_printf(" %s %s ", "", "-"));
+	printf("%d\n", ft_printf(" %s %s ", " - ", ""));
+	printf("%d\n", ft_printf(" %s %s %s %s %s", " - ", "", "4", "", s2));
+	printf("%d\n", ft_printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 "));
+
 // ERROR TEST CASES
 	// Test case 12: Trying to print a string with other specifiers
 	ft_printf("The string is %s%c%X%x%d%u%p\n", str, str, str, str, str, str, str);
@@ -81,9 +103,13 @@ int	main()
 	// Test case 14: Trying to print a something with %p
 	ft_printf("The string is %p %p %p %p %p %p %p\n", num, hex, hex, ptr, str, unum, ch);
 
+	//Test case 15: Using % and no specifier
+	ft_printf("The string is %j refe\n", ch);
+	printf("The string is %j refe\n", str);
+
 	// Test case 15: Trying to print a character with %s
 	//ft_printf("The string is %s\n", ch);
-	printf("The string is %s\n", ch);
+	//printf("The string is %s\n", ch);
 	
     return (0);
 }

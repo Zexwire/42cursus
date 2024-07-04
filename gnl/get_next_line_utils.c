@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:51:57 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/06/27 12:56:53 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/06/27 15:06:17 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,11 @@ static size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 		i++;
 	return (i);
 }
+
+// Workspace
+// , Consolas, 'Courier New', monospace
+// User
+// ,'Droid Sans Mono', 'monospace', monospace
 
 /// @brief Copies a string into allocated memory
 /// @param s1 String to copy

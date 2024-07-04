@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 20:30:00 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/06/23 21:19:13 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/07/04 13:15:29 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,12 @@ int	main()
 	ft_printf("The string is %j refe\n", ch);
 	printf("The string is %j refe\n", str);
 
-	// Test case 15: Trying to print a character with %s
+
+	//Test case 16: Using % at the end of the string
+	ft_printf("%");
+	printf("%");
+
+	// Test case 17: Segfault
 	//ft_printf("The string is %s\n", ch);
 	//printf("The string is %s\n", ch);
 	

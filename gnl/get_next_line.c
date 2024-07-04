@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:51:11 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/06/27 13:01:15 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/07/04 12:13:06 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,36 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char *get_next_line(int fd)
+char	*select(char *leftover, char *buffer, int flag)
+{
+	char	*ptr;
+
+	if (flag < 0)
+	{
+		free(leftover);
+		free(buffer);
+		return (NULL);
+	}
+	leftover = ft_strjoin(leftover, buffer);
+	free(buffer);
+	if (flag == 0)
+	{
+		ptr = ft_strdup(leftover);
+		free(leftover);
+		return (ptr);
+	}
+	else
+	{
+		//FIXME: lo ha hecho Copilot, comprobarlo bien
+		ptr = ft_strchr(leftover, '\n');
+		*ptr = '\0';
+		ptr = ft_strdup(leftover);
+		leftover = ft_strdup(ptr + 1);
+		return (ptr);
+	}
+}
+
+char	*get_next_line(int fd)
 {
 	static char	*leftover;
 	char		*buffer;
@@ -40,7 +69,7 @@ char *get_next_line(int fd)
 
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
-	buffer = (char *) malloc((BUFFER_SIZE + 1 )* sizeof(char));
+	buffer = (char *) malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
 	flag = read(fd, buffer, BUFFER_SIZE);
@@ -50,11 +79,5 @@ char *get_next_line(int fd)
 		leftover = ft_strjoin(leftover, buffer);
 		flag = read(fd, buffer, BUFFER_SIZE);
 	}
-	if (flag == 0)
-	{
-		//FIXME: saber si puedo devolver la estatica o si tengo que liberarla
-		leftover = ft_strjoin(leftover, buffer);
-		free(buffer);
-		return (leftover);
-	}
+	return (select(leftover, buffer, flag));
 }

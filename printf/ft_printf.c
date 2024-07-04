@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 16:04:04 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/06/23 21:15:47 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/07/04 13:17:34 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	parse_format(char const *format, va_list argptr, int *count)
 	}
 	else if (*format == 'p')
 	{
-		addr = (unsigned long long) va_arg(argptr, void *);
+		addr = va_arg(argptr, unsigned long long);
 		if (addr == 0)
 		{
 			*count += write(1, "(nil)", 5);
@@ -81,10 +81,10 @@ int	ft_printf(char const *format, ...)
 
 	count = 0;
 	va_start(argptr, format);
-	while (*format && count >= 0)
+	while (*format)
 	{
 		flag = count;
-		if (*format == '%')
+		if (*format == '%' && *(format + 1))
 		{
 			++format;
 			parse_format(format, argptr, &count);

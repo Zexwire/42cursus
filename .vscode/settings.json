@@ -5,7 +5,8 @@
 		"array": "c",
 		"string_view": "c",
 		"initializer_list": "c",
-		"utility": "c"
+		"utility": "c",
+		"stdarg.h": "c"
 	},
 	"editor.fontSize": 13,
 	"terminal.integrated.fontSize": 13,

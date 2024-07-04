@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:51:57 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/06/27 15:06:17 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/07/04 16:17:20 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /// @brief Length of a string
 /// @param s String to measure
 /// @return Length of the string
-static size_t	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
@@ -115,11 +115,13 @@ char	*ft_strdup(const char *s1)
 /// @param s1 First string
 /// @param s2 Second string
 /// @return Pointer to the new string, NULL if the allocation fails
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
 	int		size;
 	char	*res;
 
+	if (!s1)
+		s1 = ft_strdup("");
 	size = ft_strlen(s1) + ft_strlen(s2) + 1;
 	res = (char *) malloc(size * sizeof(char));
 	if (res == NULL)

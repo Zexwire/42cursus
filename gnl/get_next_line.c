@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:51:11 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/07/04 12:13:06 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/07/04 16:14:01 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 /// @param s String to search in
 /// @param c Character to search for
 /// @return Pointer to the found character, NULL if not found
-char	*ft_strchr(const char *s, int c)
-{
-	int		i;
+char	*ft_strchr(const char *s, int c, int length)
+{ 
+	int	i;
 
 	i = 0;
-	while (*(s + i))
+	while (i < length && *(s + i))
 	{
 		if (*(s + i) == (char) c)
 			return ((char *) s + i);
@@ -32,7 +32,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*select(char *leftover, char *buffer, int flag)
+static char	*return_line(char *leftover, char *buffer, int flag)
 {
 	char	*ptr;
 
@@ -52,8 +52,7 @@ char	*select(char *leftover, char *buffer, int flag)
 	}
 	else
 	{
-		//FIXME: lo ha hecho Copilot, comprobarlo bien
-		ptr = ft_strchr(leftover, '\n');
+		ptr = ft_strchr(leftover, '\n', ft_strlen(leftover));
 		*ptr = '\0';
 		ptr = ft_strdup(leftover);
 		leftover = ft_strdup(ptr + 1);
@@ -73,11 +72,14 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	flag = read(fd, buffer, BUFFER_SIZE);
-	while (!ft_strchr(leftover, '\n') && flag > 0)
+	if (flag > 0)
+		buffer[flag] = '\0';
+	leftover = ft_strjoin(leftover, buffer);
+	while (!ft_strchr(leftover, '\n', ft_strlen(leftover)) && flag > 0)
 	{
-		buffer[BUFFER_SIZE] = '\0';
 		leftover = ft_strjoin(leftover, buffer);
 		flag = read(fd, buffer, BUFFER_SIZE);
+		buffer[flag] = '\0';
 	}
-	return (select(leftover, buffer, flag));
+	return (return_line(leftover, buffer, flag));
 }

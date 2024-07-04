@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 19:51:50 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/07/04 21:50:40 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/07/04 22:29:27 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	read_next_line(int fd, char *leftover)
 
 	buffer = (char *) malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
-		return (NULL);
+		return (-1);
 	while (!ft_strchr(leftover, '\n'))
 	{
 		flag = read(fd, buffer, BUFFER_SIZE);

@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 20:42:54 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/07/04 21:49:58 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/07/04 22:20:50 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 
 	i = 0;
-	if (dstsize == 0)
+	if (dstsize == 0 || !src)
 		return (ft_strlen(src));
 	while (src[i] && i < (dstsize - 1))
 	{

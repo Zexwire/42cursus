@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 19:51:12 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/07/04 21:50:24 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/07/04 21:57:28 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 char	*get_next_line(int fd);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);
 
 #endif

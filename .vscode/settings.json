@@ -6,7 +6,8 @@
 		"string_view": "c",
 		"initializer_list": "c",
 		"utility": "c",
-		"stdarg.h": "c"
+		"stdarg.h": "c",
+		"get_next_line.h": "c"
 	},
 	"editor.fontSize": 13,
 	"terminal.integrated.fontSize": 13,

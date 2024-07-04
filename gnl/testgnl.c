@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:09:32 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/07/04 16:10:23 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/07/04 21:51:35 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 
+//TODO: casos de fd -1, fd aleatorio, y tener txts de prueba
 int	main(void)
 {
 	int		fd;

@@ -5,25 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/27 11:51:57 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/07/04 16:17:20 by mcarnere         ###   ########.fr       */
+/*   Created: 2024/07/04 20:42:54 by mcarnere          #+#    #+#             */
+/*   Updated: 2024/07/04 21:49:58 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-/// @brief Length of a string
-/// @param s String to measure
-/// @return Length of the string
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
 
 /// @brief Appends the NUL-terminated string src to the end of dst, 
 /// at most dstsize - strlen(dst) - 1 characters will be copied
@@ -84,10 +71,23 @@ static size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (i);
 }
 
-// Workspace
-// , Consolas, 'Courier New', monospace
-// User
-// ,'Droid Sans Mono', 'monospace', monospace
+/// @brief Concatenates two strings in a new allocated string
+/// @param s1 First string
+/// @param s2 Second string
+/// @return Pointer to the new string, NULL if the allocation fails
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		size;
+	char	*res;
+
+	size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	res = (char *) malloc(size * sizeof(char));
+	if (res == NULL)
+		return (NULL);
+	ft_strlcpy(res, s1, size);
+	ft_strlcat(res, s2, size);
+	return (res);
+}
 
 /// @brief Copies a string into allocated memory
 /// @param s1 String to copy
@@ -111,22 +111,26 @@ char	*ft_strdup(const char *s1)
 	return (res);
 }
 
-/// @brief Concatenates two strings in a new allocated string
-/// @param s1 First string
-/// @param s2 Second string
-/// @return Pointer to the new string, NULL if the allocation fails
-char	*ft_strjoin(char *s1, char const *s2)
+/// @brief Allocates a substring from the string s with at most len characters
+/// @param s String to extract from
+/// @param start Index to start extracting from
+/// @param len Number of characters to extract
+/// @return Pointer to the new string, NULL if allocation fails
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int		size;
 	char	*res;
+	size_t	slen;
 
-	if (!s1)
-		s1 = ft_strdup("");
-	size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	res = (char *) malloc(size * sizeof(char));
+	if (!s)
+		return (NULL);
+	slen = ft_strlen(s);
+	if (slen <= start)
+		return (ft_strdup(""));
+	if (slen - start < len)
+		len = slen - start;
+	res = (char *) malloc((len + 1) * sizeof(char));
 	if (res == NULL)
 		return (NULL);
-	ft_strlcpy(res, s1, size);
-	ft_strlcat(res, s2, size);
+	ft_strlcpy(res, (s + start), (len + 1));
 	return (res);
 }

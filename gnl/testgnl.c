@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:09:32 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/07/04 21:51:35 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/08/14 20:04:30 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ int	main(void)
 		free(line);
 		line = get_next_line(fd);
 	}
-	close(fd);
+	close(fd);	
 	return (0);
 }

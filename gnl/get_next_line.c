@@ -5,12 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/04 19:51:50 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/07/04 22:29:27 by mcarnere         ###   ########.fr       */
+/*   Created: 2024/08/14 19:45:48 by mcarnere          #+#    #+#             */
+/*   Updated: 2024/08/14 20:02:10 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 /// @brief Length of a string
 /// @param s String to measure
@@ -27,30 +28,26 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-/// @brief Checks for the first occurrence of the character c in the string s
+/// @brief Tweaked versión of strchr to only check for newline
 /// @param s String to search in
-/// @param c Character to search for
-/// @return Pointer to the found character, NULL if not found
-static char	*ft_strchr(const char *s, int c)
+/// @return Pointer to the found newline, NULL if not found
+static char	*ft_strchr_nwln(const char *s)
 {
-	int		i;
+	int	i;
 
-	if (s)
+	if (!s)
+		return (NULL);
+	i = 0;
+	while (*(s + i))
 	{
-		i = 0;
-		while (*(s + i))
-		{
-			if (*(s + i) == (char) c)
-				return ((char *) s + i);
-			++i;
-		}
+		if (*(s + i) == '\n')
+			return ((char *) s + i);
+		++i;
 	}
-	if ((char) c == '\0')
-		return ((char *) s + i);
 	return (NULL);
 }
 
-int	read_next_line(int fd, char *leftover)
+static char	*read_next_line(int fd, char *leftover)
 {
 	char	*buffer;
 	char	*aux;
@@ -58,12 +55,11 @@ int	read_next_line(int fd, char *leftover)
 
 	buffer = (char *) malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
-		return (-1);
-	while (!ft_strchr(leftover, '\n'))
+		return (NULL);
+	flag = 1;
+	while (flag > 0 && !ft_strchr_nwln(leftover))
 	{
 		flag = read(fd, buffer, BUFFER_SIZE);
-		if (flag <= 0)
-			break ;
 		buffer[flag] = '\0';
 		aux = leftover;
 		leftover = ft_strjoin(leftover, buffer);
@@ -71,34 +67,39 @@ int	read_next_line(int fd, char *leftover)
 	}
 	free(buffer);
 	if (flag < 0)
-		free(leftover);
-	return (flag);
+	{
+		if (leftover)
+			free(leftover);
+		return (NULL);
+	}
+	return (leftover);
 }
 
 char	*get_next_line(int fd)
 {
+	
 	static char	*leftover = NULL;
 	char		*ptr;
 	char		*aux;
-	int			flag;
+	int			offset;
 
 	if (BUFFER_SIZE <= 0 || fd < 0)
-	//FIXME: no se si liberar leftover aquí
 		return (NULL);
-	flag = read_next_line(fd, leftover);
-	if (flag < 0)
+	if (!ft_strchr_nwln(leftover))
+		leftover = read_next_line(fd, leftover);
+	if (!leftover)
 		return (NULL);
-	if (flag == 0)
+	aux = ft_strchr_nwln(leftover);
+	if (aux)
 	{
-		ptr = ft_strdup(leftover);
-		free(leftover);
+		offset = aux - leftover;
+		ptr = ft_substr(leftover, 0, offset);
+		aux = leftover;
+		leftover = ft_strdup(leftover + offset + 1);
+		if (!leftover)
+			return (NULL);
+		free(aux);
 		return (ptr);
 	}
-	//FIXME: comprobar si necesita un +1
-	flag = ft_strchr(leftover, '\n') - leftover;
-	ptr = ft_substr(leftover, 0, flag);
-	aux = leftover;
-	leftover = ft_strdup(leftover + flag);
-	free(aux);
-	return (ptr);
+	return (leftover);
 }

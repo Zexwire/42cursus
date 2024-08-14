@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 19:45:48 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/08/14 21:14:51 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/08/14 22:11:56 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ static char	*read_next_line(int fd, char *leftover)
 
 char	*get_next_line(int fd)
 {
-	
 	static char	*leftover = NULL;
 	char		*ptr;
 	char		*aux;

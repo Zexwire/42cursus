@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 19:45:48 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/08/14 22:25:51 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/08/14 22:27:50 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ static char	*read_next_line(int fd, char *leftover)
 		free(aux);
 	}
 	free(buffer);
-	//FIXME: no vale porque tira la ultima linea en caso de que no haya salto de linea al final
+	//FIXME: no vale <= porque tira la ultima linea en caso de que no haya salto de linea al final
+	// pero tampoco vale < porque hace doble free
 	if (flag <= 0)
 	{
 		if (leftover)

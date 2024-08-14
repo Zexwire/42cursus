@@ -6,11 +6,12 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 19:45:48 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/08/14 22:11:56 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/08/14 22:25:51 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+//FIXME: quitar este include al terminar de debuggear
 #include <stdio.h>
 
 /// @brief Length of a string
@@ -63,10 +64,11 @@ static char	*read_next_line(int fd, char *leftover)
 		buffer[flag] = '\0';
 		aux = leftover;
 		leftover = ft_strjoin(leftover, buffer);
-		//printf("Variables accessible from here: \nFlag: %d\nLeftover: %s\nAux: %s\n", flag, leftover, aux);
+		printf("Variables accessible from here: \nFlag: %d\nLeftover: %s\nAux: %s\n", flag, leftover, aux);
 		free(aux);
 	}
 	free(buffer);
+	//FIXME: no vale porque tira la ultima linea en caso de que no haya salto de linea al final
 	if (flag <= 0)
 	{
 		if (leftover)
@@ -96,7 +98,7 @@ char	*get_next_line(int fd)
 		ptr = ft_substr(leftover, 0, offset);
 		aux = leftover;
 		leftover = ft_strdup(leftover + offset + 1);
-		//printf("PITO Y BOLAS\nVariables accessible from here: \nOffset: %d\nLeftover: %s\nAux: %s\n", offset, leftover, aux);
+		printf("PITO Y BOLAS\nVariables accessible from here: \nOffset: %d\nLeftover: %s\nAux: %s\n", offset, leftover, aux);
 		if (!leftover)
 			return (NULL);
 		free(aux);

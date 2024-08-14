@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:09:32 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/08/14 22:12:32 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/08/14 22:24:44 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 	int		fd;
 	char	*line;
 
-	fd = open("test.txt", O_RDONLY);
+	fd = open("test1.txt", O_RDONLY);
 	line = get_next_line(fd);
 	while (line)
 	{

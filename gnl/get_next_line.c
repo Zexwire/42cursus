@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 19:45:48 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/08/14 20:41:59 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/08/14 21:14:51 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,11 @@ static char	*read_next_line(int fd, char *leftover)
 		buffer[flag] = '\0';
 		aux = leftover;
 		leftover = ft_strjoin(leftover, buffer);
-		printf("Variables accessible from here: \nFlag: %d\nLeftover: %s\nAux: %s\n", flag, leftover, aux);
-		//este free da error de doble liberación, pero no sé porque
+		//printf("Variables accessible from here: \nFlag: %d\nLeftover: %s\nAux: %s\n", flag, leftover, aux);
 		free(aux);
 	}
 	free(buffer);
-	if (flag < 0)
+	if (flag <= 0)
 	{
 		if (leftover)
 			free(leftover);
@@ -98,7 +97,7 @@ char	*get_next_line(int fd)
 		ptr = ft_substr(leftover, 0, offset);
 		aux = leftover;
 		leftover = ft_strdup(leftover + offset + 1);
-		printf("PITO Y BOLAS\nVariables accessible from here: \nOffset: %d\nLeftover: %s\nAux: %s\n", offset, leftover, aux);
+		//printf("PITO Y BOLAS\nVariables accessible from here: \nOffset: %d\nLeftover: %s\nAux: %s\n", offset, leftover, aux);
 		if (!leftover)
 			return (NULL);
 		free(aux);

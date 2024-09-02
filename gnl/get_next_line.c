@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 19:45:48 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/08/14 22:27:50 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/09/02 20:11:12 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,19 @@ static char	*ft_strchr_nwln(const char *s)
 	return (NULL);
 }
 
+char	*treat_line(int flag, char **leftover)
+{
+	if (flag == 0 && !*leftover)
+		return (NULL);
+	else if (flag < 0)
+	{
+		if (*leftover)
+			free(*leftover);
+		return (NULL);
+	}
+	return (*leftover);
+}
+
 static char	*read_next_line(int fd, char *leftover)
 {
 	char	*buffer;
@@ -57,25 +70,18 @@ static char	*read_next_line(int fd, char *leftover)
 	buffer = (char *) malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
-	flag = 1;
-	while (flag > 0 && !ft_strchr_nwln(leftover))
+	while (!ft_strchr_nwln(leftover))
 	{
 		flag = read(fd, buffer, BUFFER_SIZE);
+		if (flag <= 0)
+			break ;
 		buffer[flag] = '\0';
 		aux = leftover;
 		leftover = ft_strjoin(leftover, buffer);
-		printf("Variables accessible from here: \nFlag: %d\nLeftover: %s\nAux: %s\n", flag, leftover, aux);
 		free(aux);
 	}
 	free(buffer);
-	//FIXME: no vale <= porque tira la ultima linea en caso de que no haya salto de linea al final
-	// pero tampoco vale < porque hace doble free
-	if (flag <= 0)
-	{
-		if (leftover)
-			free(leftover);
-		return (NULL);
-	}
+	leftover = treat_line(flag, &leftover);
 	return (leftover);
 }
 
@@ -99,11 +105,11 @@ char	*get_next_line(int fd)
 		ptr = ft_substr(leftover, 0, offset);
 		aux = leftover;
 		leftover = ft_strdup(leftover + offset + 1);
-		printf("PITO Y BOLAS\nVariables accessible from here: \nOffset: %d\nLeftover: %s\nAux: %s\n", offset, leftover, aux);
 		if (!leftover)
 			return (NULL);
 		free(aux);
 		return (ptr);
 	}
+	printf("PITO Y BOLAS\nLeftover: %s\n", leftover);
 	return (leftover);
 }

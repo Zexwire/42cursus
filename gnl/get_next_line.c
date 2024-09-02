@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 19:45:48 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/09/02 20:11:12 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/09/02 20:27:06 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,13 @@ static char	*ft_strchr_nwln(const char *s)
 
 char	*treat_line(int flag, char **leftover)
 {
-	if (flag == 0 && !*leftover)
+	//FIXME: we do not handle properly EOF, we print garbage and double free after the last line
+	if (flag == 0 && (!*leftover || **leftover == '\0'))
+	{
+		free(*leftover);
 		return (NULL);
-	else if (flag < 0)
+	}
+	if (flag < 0)
 	{
 		if (*leftover)
 			free(*leftover);
@@ -105,11 +109,8 @@ char	*get_next_line(int fd)
 		ptr = ft_substr(leftover, 0, offset);
 		aux = leftover;
 		leftover = ft_strdup(leftover + offset + 1);
-		if (!leftover)
-			return (NULL);
 		free(aux);
 		return (ptr);
 	}
-	printf("PITO Y BOLAS\nLeftover: %s\n", leftover);
 	return (leftover);
 }

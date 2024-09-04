@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 20:42:54 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/07/04 22:20:50 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/09/04 21:28:22 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*res;
 
 	size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	//FIXME: dice que strlcat depende de uninitialized porque res es malloc y no calloc
 	res = (char *) malloc(size * sizeof(char));
 	if (res == NULL)
 		return (NULL);

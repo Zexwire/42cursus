@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 19:51:12 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/09/05 15:43:44 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/09/05 16:04:38 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@
 # include <stdlib.h>
 
 char	*get_next_line(int fd);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_substr_tweaked(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin_tweaked(char const *s1, char const *s2);
 char	*ft_strdup(const char *s1);
-size_t	ft_strlen(const char *s);
 
 #endif

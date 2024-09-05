@@ -6,11 +6,26 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 20:42:54 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/09/05 15:43:25 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/09/05 16:53:57 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+/// @brief Length of a string
+/// @param s String to measure
+/// @return Length of the string
+static size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
 /// @brief Appends the NUL-terminated string src to the end of dst, 
 /// at most dstsize - strlen(dst) - 1 characters will be copied
@@ -44,30 +59,6 @@ static size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		i++;
 		j++;
 	}
-	return (i);
-}
-
-/// @brief Copy string src to dst, up to dstsize - 1 characters
-/// @param dst Destination string
-/// @param src Source string
-/// @param dstsize Size of the destination buffer
-/// @return Length of the string that would have been created 
-/// if dst had enough space
-static size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	size_t	i;
-
-	i = 0;
-	if (dstsize == 0 || !src)
-		return (ft_strlen(src));
-	while (src[i] && i < (dstsize - 1))
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	while (src[i])
-		i++;
 	return (i);
 }
 
@@ -123,10 +114,11 @@ char	*ft_strdup(const char *s1)
 /// @param start Index to start extracting from
 /// @param len Number of characters to extract
 /// @return Pointer to the new string, NULL if allocation fails
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr_tweaked(char const *s, unsigned int start, size_t len)
 {
 	char	*res;
 	size_t	slen;
+	size_t	i;
 
 	if (!s)
 		return (NULL);
@@ -138,6 +130,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	res = (char *) malloc((len + 1) * sizeof(char));
 	if (res == NULL)
 		return (NULL);
-	ft_strlcpy(res, (s + start), (len + 1));
+	i = 0;
+	while (s[i + start] && i < len)
+	{
+		res[i] = s[i + start];
+		i++;
+	}
+	res[i] = '\0';
 	return (res);
 }

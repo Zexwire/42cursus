@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 19:45:48 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/09/05 18:41:07 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/09/05 17:59:30 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,36 +33,17 @@ static char	*ft_strchr_nwln(const char *s)
 	return (NULL);
 }
 
-char	*treat_line(int flag, char *leftover)
+char	*treat_line(int flag, char **leftover)
 {
-	int		offset;
-	char	*ptr;
-	char	*aux;
-
-	if (flag == 0 && (!leftover || *leftover == '\0'))
+	if (flag == 0 && (!*leftover || **leftover == '\0'))
 		return (NULL);
 	if (flag < 0)
 	{
-		if (leftover)
-			free(leftover);
+		if (*leftover)
+			free(*leftover);
 		return (NULL);
 	}
-	//FIXME: el tamaño del buffer afecta acomo se tratan los elementos,
-	// posiblemente no actualizamos bien el leftover al terminar
-	aux = ft_strchr_nwln(leftover);
-	offset = aux - leftover;
-	if (aux && flag <= offset)
-	{
-		ptr = ft_substr_tweaked(leftover, 0, offset);
-		aux = leftover;
-		leftover = ft_strdup(leftover + offset + 1);
-		free(aux);
-		return (ptr);
-	}
-	ptr = ft_strdup(leftover);
-	free(leftover);
-	leftover = NULL;
-	return (ptr);
+	return (*leftover);
 }
 
 static char	*read_next_line(int fd, char *leftover)
@@ -85,19 +66,36 @@ static char	*read_next_line(int fd, char *leftover)
 		free(aux);
 	}
 	free(buffer);
-	return (treat_line(flag, leftover));
+	leftover = treat_line(flag, &leftover);
+	return (leftover);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*leftover = NULL;
-	char		*res;
+	char		*ptr;
+	char		*aux;
+	int			offset;
 
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
-	//TODO: comprobar que sigue liberando bien al pasarselo así
-	res = read_next_line(fd, leftover);
-	if (!res)
+	if (!ft_strchr_nwln(leftover))
+		leftover = read_next_line(fd, leftover);
+	if (!leftover)
 		return (NULL);
-	return (res);
+	//FIXME: usar flag para saber cuantos caracteres nos podemos mover
+	aux = ft_strchr_nwln(leftover);
+	if (aux)
+	{
+		offset = aux - leftover;
+		ptr = ft_substr_tweaked(leftover, 0, offset);
+		aux = leftover;
+		leftover = ft_strdup(leftover + offset + 1);
+		free(aux);
+		return (ptr);
+	}
+	ptr = ft_strdup(leftover);
+	free(leftover);
+	leftover = NULL;
+	return (ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 20:42:54 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/09/04 21:28:22 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/09/05 15:43:25 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,23 @@ static size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 /// @param s1 First string
 /// @param s2 Second string
 /// @return Pointer to the new string, NULL if the allocation fails
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin_tweaked(char const *s1, char const *s2)
 {
 	int		size;
 	char	*res;
+	size_t	i;
 
 	size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	//FIXME: dice que strlcat depende de uninitialized porque res es malloc y no calloc
 	res = (char *) malloc(size * sizeof(char));
 	if (res == NULL)
 		return (NULL);
-	ft_strlcpy(res, s1, size);
+	i = 0;
+	while (s1 && s1[i])
+	{
+		res[i] = s1[i];
+		i++;
+	}
+	res[i] = '\0';
 	ft_strlcat(res, s2, size);
 	return (res);
 }

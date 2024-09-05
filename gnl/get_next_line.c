@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 19:45:48 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/09/04 20:24:32 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/09/05 15:43:56 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static char	*read_next_line(int fd, char *leftover)
 			break ;
 		buffer[flag] = '\0';
 		aux = leftover;
-		leftover = ft_strjoin(leftover, buffer);
+		leftover = ft_strjoin_tweaked(leftover, buffer);
 		free(aux);
 	}
 	free(buffer);

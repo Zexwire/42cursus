@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 20:42:54 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/09/05 16:53:57 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/09/10 19:53:14 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /// @brief Length of a string
 /// @param s String to measure
 /// @return Length of the string
-static size_t	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 

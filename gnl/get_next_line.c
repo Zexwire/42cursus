@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 19:45:48 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/09/05 18:41:07 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/09/10 20:01:43 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,34 @@ static char	*ft_strchr_nwln(const char *s)
 	return (NULL);
 }
 
-char	*treat_line(int flag, char *leftover)
+static char	*extract_line(char *aux, char *leftover)
 {
-	int		offset;
+	char	*ptr;
+	size_t	offset;
+
+
+	offset = aux - leftover;
+	ptr = ft_substr_tweaked(leftover, 0, offset);
+	if (ft_strlen(leftover) < offset)
+	{
+		aux = leftover;
+		leftover = ft_strdup(leftover + offset + 1);
+		free(aux);
+	}
+	else
+	{
+		free(leftover);
+		leftover = NULL;
+	}
+	return (ptr);
+}
+
+static char	*treat_line(int flag, char *leftover)
+{
 	char	*ptr;
 	char	*aux;
 
-	if (flag == 0 && (!leftover || *leftover == '\0'))
+	if (flag == 0 && !leftover)
 		return (NULL);
 	if (flag < 0)
 	{
@@ -47,18 +68,9 @@ char	*treat_line(int flag, char *leftover)
 			free(leftover);
 		return (NULL);
 	}
-	//FIXME: el tamaño del buffer afecta acomo se tratan los elementos,
-	// posiblemente no actualizamos bien el leftover al terminar
 	aux = ft_strchr_nwln(leftover);
-	offset = aux - leftover;
-	if (aux && flag <= offset)
-	{
-		ptr = ft_substr_tweaked(leftover, 0, offset);
-		aux = leftover;
-		leftover = ft_strdup(leftover + offset + 1);
-		free(aux);
-		return (ptr);
-	}
+	if (aux)
+		return(extract_line(aux, leftover));
 	ptr = ft_strdup(leftover);
 	free(leftover);
 	leftover = NULL;

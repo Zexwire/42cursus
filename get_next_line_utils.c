@@ -5,31 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 22:30:29 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/09/17 00:00:46 by mcarnere         ###   ########.fr       */
+/*   Created: 2024/07/04 20:42:54 by mcarnere          #+#    #+#             */
+/*   Updated: 2024/09/16 22:38:32 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-/// @brief Tweaked versión of strchr to only check for newline
-/// @param s String to search in
-/// @return Pointer to the found newline, NULL if not found
-char	*ft_strchr_nwln(const char *s)
-{
-	int	i;
-
-	if (!s)
-		return (NULL);
-	i = 0;
-	while (*(s + i))
-	{
-		if (*(s + i) == '\n')
-			return ((char *) s + i);
-		++i;
-	}
-	return (NULL);
-}
 
 /// @brief Length of a string
 /// @param s String to measure
@@ -46,7 +27,42 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-// @brief Concatenates two strings in a new allocated string
+/// @brief Appends the NUL-terminated string src to the end of dst, 
+/// at most dstsize - strlen(dst) - 1 characters will be copied
+/// @param dst Destination string
+/// @param src Source string
+/// @param dstsize Size of the destination buffer
+/// @return Length of the string that would have been created if enough space
+static size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (*(dst + i) && dstsize > 0)
+	{
+		i++;
+		dstsize--;
+	}
+	j = 0;
+	while (*(src + j) && dstsize > 1)
+	{
+		*(dst + i) = *(src + j);
+		j++;
+		i++;
+		dstsize--;
+	}
+	if (dstsize >= 1)
+		*(dst + i) = '\0';
+	while (*(src + j))
+	{
+		i++;
+		j++;
+	}
+	return (i);
+}
+
+/// @brief Concatenates two strings in a new allocated string
 /// @param s1 First string
 /// @param s2 Second string
 /// @return Pointer to the new string, NULL if the allocation fails
@@ -73,7 +89,6 @@ char	*ft_strjoin_tweaked(char const *s1, char const *s2)
 		res[i + j] = s2[j];
 		++j;
 	}
-	res[i + j] = '\0';
 	return (res);
 }
 

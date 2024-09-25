@@ -44,15 +44,8 @@ static char	*extract_line(char *in_hold)
 	}
 	offset = aux - in_hold + 1;
 	res = ft_substr_tweaked(in_hold, 0, offset);
-	//FIXME: posiblemente es una mala idea, porque estoy juntando funciones, pero son las 12 de la noche
-	if (in_hold + offset != '\0')
-	{
-		aux = in_hold;
-		in_hold = ft_strdup(in_hold + offset);
-		free(aux);
-	}
-	else
-		free_holded(in_hold);
+	if (!res)
+		return (NULL);
 	return (res);
 }
 

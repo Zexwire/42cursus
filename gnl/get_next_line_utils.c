@@ -6,7 +6,7 @@
 /*   By: mcarnere <mcarnere@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 22:30:29 by mcarnere          #+#    #+#             */
-/*   Updated: 2024/09/17 00:00:46 by mcarnere         ###   ########.fr       */
+/*   Updated: 2024/09/29 17:48:10 by mcarnere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	*ft_strjoin_tweaked(char const *s1, char const *s2)
 	while (s1 && s1[i])
 	{
 		res[i] = s1[i];
-		++j;
+		++i;
 	}
 	j = 0;
 	while (s2 && s2[j])
